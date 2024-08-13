@@ -1,0 +1,108 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+}
+
+.title {
+    color: white;
+    font-family: 'Origin', sans-serif;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: top 2.5s ease-in-out, transform 2.5s ease-in-out;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: normal;
+    animation: blink 882ms infinite;
+    animation-delay: 7.05s;
+}
+
+.title.glide {
+    top: 15%; /* Lower this so that it doesn't interfere with other elements */
+    transform: translate(-50%, 0);
+    margin-bottom: 40px;
+}
+
+#fadeInText {
+    font-family: 'Origin', sans-serif;
+    font-size: 1.3em;
+    font-style: italic;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 2s ease-in-out;
+    margin-top: 50px; /* Adjust this to reduce overlap */
+    white-space: normal;
+}
+
+#fadeInText.visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 6s;
+}
+
+#fadeInText p:first-child {
+    margin-bottom: 10px;
+}
+
+#cursor {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+    position: relative; /* Position relative for better control */
+    top: -50%; /* Adjust the cursor's vertical position */
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+audio {
+    display: none;
+}
+
+#Calvin {
+    display: block;
+    margin: 20px auto 0 auto;
+    width: 20%;
+    height: auto;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.2em;
+        top: 50%; /* Center vertically on mobile */
+        transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    }
+
+    #fadeInText {
+        font-size: 0.8em;
+        margin-top: 100px;
+    }
+
+    #fadeInText p {
+        margin-bottom: 10px;
+    }
+
+    #Calvin {
+        width: 40%;
+    }
+
+    #cursor {
+        top: 0; /* Reset top position */
+        line-height: 1; /* Ensure it's vertically aligned with the text */
+    }
+}

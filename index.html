@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="title">
+        <span id="typingText"></span><span id="cursor">|</span>
+    </div>
+
+    <div id="fadeInText">
+    <p>JUST BOUGHT THIS DOMAIN</p>
+    <p>LETS MAKE A SICK COLLECTIVE</p>
+    <img src="Calvin.png" alt="Calvin" id="Calvin">
+</div>
+
+
+    <audio id="backgroundMusic" loop>
+        <source src="ASAPRocky.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      const typingText = document.getElementById("typingText");
+const cursor = document.getElementById("cursor");
+const text = "SUP PUSSY";
+let index = 0;
+
+window.onload = () => {
+    // Cursor starts blinking immediately
+    cursor.style.animation = 'blink 1s step-end infinite';
+
+    // Wait for a click event to start the music and animation
+    document.body.addEventListener('click', startAnimation, { once: true });
+};
+
+function startAnimation() {
+    const music = document.getElementById("backgroundMusic");
+    music.play(); // Start the music
+
+    // Start the typing animation after the click
+    type();
+}
+
+function type() {
+    if (index < text.length) {
+        // Stop cursor blinking when the first character is typed
+        if (index === 0) {
+            cursor.style.animation = 'none'; // Remove the blinking animation
+        }
+
+        typingText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 275);
+    } else {
+    cursor.style.display = 'none';
+
+    // Trigger confetti immediately after typing finishes
+    setTimeout(() => {
+    triggerConfetti();
+
+    // Delay the glide effect by 1 second (1000 milliseconds)
+    setTimeout(() => {
+        document.querySelector('.title').classList.add('glide');
+    }, 7000)
+  }, 1650);
+}
+
+    }
+
+
+function triggerConfetti() {
+
+    setTimeout(() => {
+        document.getElementById('fadeInText').classList.add('visible');
+    }, 5000);
+}
+    </script>
+</body>
+</html>
